@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clients</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* Show it is fixed to the top */
+      body {
+        min-height: 75rem;
+        padding-top: 4.5rem;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">WebIT Assessment</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="jumbotron">
+        
+
+        <form method="POST" class="post-form" action="/client/update/{{client.id}}">
+          {% csrf_token %}
+          <div class="container">
+            <h1>Update Client</h1>
+            <br />
+            <div class="form-group row">
+              <label class="col-sm-1 col-form-label"></label>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Client Name:</label>
+              <div class="col-sm-4">
+                <input type="text" name="client_name" id="client_name" required maxlength="100" value="{{ client.client_name }}" />  
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Street Name:</label>
+              <div class="col-sm-4">
+                <input type="text" name="street_name" id="street_name" maxlength="100" value="{{ client.street_name }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Suburb:</label>
+              <div class="col-sm-4">
+                <input type="text" name="suburb" id="suburb" maxlength="100" value="{{ client.suburb }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Postcode:</label>
+              <div class="col-sm-4">
+                <input type="text" name="postcode" id="postcode" maxlength="100" value="{{ client.postcode }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">State:</label>
+              <div class="col-sm-4">
+                <input type="text" name="state" id="state" maxlength="100" value="{{ client.state }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Contact Name:</label>
+              <div class="col-sm-4">
+                <input type="text" name="contact_name" id="contact_name" maxlength="100" value="{{ client.contact_name }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Email Address:</label>
+              <div class="col-sm-4">
+                <input type="text" name="email_address" id="email_address" required maxlength="100" value="{{ client.email_address }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Phone Number:</label>
+              <div class="col-sm-4">
+                <input type="text" name="phone_number" id="phone_number" required maxlength="100" value="{{ client.phone_number }}" /> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-1 col-form-label"></label>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-success">Update</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
