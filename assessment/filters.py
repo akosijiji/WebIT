@@ -2,6 +2,7 @@ from .models import Client
 from django.db.models import Case, When
 import django_filters
 
+
 class ClientFilter(django_filters.FilterSet):
 
     client_name = django_filters.CharFilter(lookup_expr='icontains')
@@ -16,14 +17,14 @@ class ClientFilter(django_filters.FilterSet):
         (4, 'Suburb'),
     )
 
-    ordering = django_filters.ChoiceFilter(label='Sort by', choices=CHOICES, method='filter_by_order')
+    ordering = django_filters.ChoiceFilter(
+        label='Sort by', choices=CHOICES, method='filter_by_order')
 
     class Meta:
         model = Client
         fields = ['client_name', 'phone_number', 'email_address', 'suburb']
 
     def filter_by_order(self, queryset, name, value):
-        # expression = 'client_name' if value == 'ascending' else '-client_name'
         if value == '1':
             expression = 'client_name'
         elif value == '2':
@@ -33,4 +34,3 @@ class ClientFilter(django_filters.FilterSet):
         else:
             expression = 'suburb'
         return queryset.order_by(expression)
-        # return queryset.order_by(Case(When(value='1', then='client_name')), Case(When(ordering='2', then='phone_number')), Case(When(ordering='3', then='email_address')), Case(When(ordering='4', then='suburb')))
